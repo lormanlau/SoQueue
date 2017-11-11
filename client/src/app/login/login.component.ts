@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(private _LRService: LoginregService) { }
 
   login() {
-    this._LRService.login(this.user);
+    this._LRService.loginUser(this.user);
   }
 
 

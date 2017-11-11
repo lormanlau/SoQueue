@@ -6,7 +6,7 @@ import 'rxjs';
 export class LoginregService {
   constructor(private _http: Http) { }
 
-  login(user){
+  loginUser(user){
     return this._http.post('company/login', user)
     .map(data => data.json())
     .toPromise();
