@@ -1,31 +1,46 @@
-<form #form="ngForm">
-  <p>
-    Email:
-    <input
-      type="text"
-      name="email"
-      required
-      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-      [(ngModel)]="user.email"
-      #email='ngModel'
-    >
-  </p>
-  <div *ngIf='!email.valid && email.dirty'>Email must be valid</div>
-  <p>
-    Password:
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <h2>Login</h2>
+  <form #form="ngForm">
+    <div class="form-group">            
+      <p>
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          name="email"
+          class="form-control"
+          required
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+          [(ngModel)]="user.email"
+          #email='ngModel'
+        >
+      </p>
+    </div>
+
+    <div *ngIf='!email.valid && email.dirty'>Email must be valid</div>
+    <div class="form-group">  
+      <p>
+        <label for="email">Password:</label>
+        <input 
+          type="password"
+          name="password"
+          class="form-control"
+          required
+          minlength="8"
+          [(ngModel)]="user.password"
+          #password='ngModel'
+        >
+      </p>
+    </div>
     <input 
-      type="password"
-      name="password"
-      required
-      minlength="8"
-      [(ngModel)]="user.password"
-      #password='ngModel'
+      (click)="login()" 
+      [routerLink]="['dashboard']"
+      class="btn btn-default"
+      type="submit"  
+      value="Login"
     >
-  </p>
-  <input 
-    (click)="login()" 
-    [routerLink]="['dashboard']"
-    type="submit"  
-    value="Login"
-  >
-</form>
+  </form>
+</div>
