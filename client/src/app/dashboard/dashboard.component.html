@@ -10,7 +10,7 @@
 					<a class="navbar-brand" href="#">SoQueue</a>
 				</div>
 			<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+					<li><a *ngIf="company" [routerLink]="['/']" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -18,8 +18,8 @@
 		<thead>
 			<tr>
 				<th>Number</th>
-				<th>Name</th>
-				<th>Phone #</th>
+				<th *ngIf="company">Name</th>
+				<th *ngIf="company">Phone #</th>
 				<th>Party</th>
 				<th *ngIf="!getCustomer()">Served</th>
 				<th *ngIf="!getCustomer()">Notify</th>
@@ -28,8 +28,8 @@
 		<tbody>
 			<tr *ngFor="let customer of customers" [attr.class]="getStyleClass(customer)">
 				<td>{{customer._id}}</td>
-				<td>{{customer.name}}</td>
-				<td>{{customer.phone}}</td>
+				<td *ngIf="company">{{customer.name}}</td>
+				<td *ngIf="company">{{customer.phone}}</td>
 				<td>{{customer.party}}</td>
 				<td *ngIf="!getCustomer()"><span (click)="removeCustomer($event, customer)" class="glyphicon glyphicon-check text-success"></span></td>
 				<td *ngIf="!getCustomer()"><span (click)="sendSMS(customer)" class="glyphicon glyphicon-bell text-warning"></span></td>

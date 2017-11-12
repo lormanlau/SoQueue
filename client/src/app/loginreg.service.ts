@@ -36,14 +36,14 @@ export class LoginregService {
         .toPromise();
   }
 
-  addCustomer(customer) {
-    let companyId = localStorage.getItem('companyId');
+  addCustomer(customer, companyId) {
+    // let companyId = localStorage.getItem('companyId');
     return this._http.post(`company/${companyId}/customer`, customer)
         .toPromise();
   }
 
-  getCompanyCustomers() {
-    let companyId = localStorage.getItem('companyId');
+  getCompanyCustomers(companyId: String) {
+    // let companyId = localStorage.getItem('companyId');
     console.log(companyId)
     return this._http.get(`company/${companyId}/customer`)
         .toPromise();

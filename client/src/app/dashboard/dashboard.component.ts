@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LoginregService } from './../loginreg.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,10 +11,14 @@ import { LoginregService } from './../loginreg.service';
 
 export class DashboardComponent implements OnInit {
 
-  constructor(private _LRService: LoginregService) { }
+  constructor(private _LRService: LoginregService,
+    private _route: ActivatedRoute) { }
 
   @Input()
   customer: Boolean;
+  companyId: String;
+  company: Boolean = false;
+  private sub: any;
 
   getCustomer(){
     return this.customer || false;
@@ -21,7 +26,15 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() { 
-  	this.clear();
+    this.sub = this._route.params.subscribe(params => {
+       this.companyId = params['id'];
+       this.company = false;
+    });
+    if (!this.companyId){
+      this.companyId = localStorage.getItem('companyId')
+      this.company = true
+    }
+    this.clear();
     this.getCustomers();
 	}
 
@@ -30,7 +43,7 @@ export class DashboardComponent implements OnInit {
   customers: any[] = []
 
   addCustomer() {
-  	this._LRService.addCustomer(this.newCustomer);
+  	this._LRService.addCustomer(this.newCustomer, this.companyId);
   	this.clear();
   	this.getCustomers();
   }
@@ -40,12 +53,12 @@ export class DashboardComponent implements OnInit {
 	  	name: undefined,
 	  	phone: undefined,
 	  	party: undefined,
-      companyId: localStorage.getItem('companyId')
+      companyId: this.companyId
 	  };
   }
 
   getCustomers() {
-  	this._LRService.getCompanyCustomers()
+  	this._LRService.getCompanyCustomers(this.companyId)
     .then(res => {
       console.log(res)
   		this.customers = res.json();
@@ -86,5 +99,10 @@ export class DashboardComponent implements OnInit {
     else {
       return "";
     }
+  }
+
+  logout(){
+    this.company = false;
+    localStorage.clear()
   }
 }
