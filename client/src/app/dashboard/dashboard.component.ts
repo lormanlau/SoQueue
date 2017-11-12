@@ -51,6 +51,19 @@ export class DashboardComponent implements OnInit {
   	this._LRService.removeCustomer(customer._id);
   }
 
+  sendSMS(customer) {
+    if (!customer.phone || customer.phone.length < 10) {
+      alert("Sorry, the customer did not leave a valid phone number: " + customer.phone);
+      return;
+    }
+    
+    let payload = {
+      phone: customer.phone,
+      text: `Hello ${customer.name}, your table for ${customer.party} is almost ready. Please be ready for your name to be called in 15 mins.`
+    }
+    this._LRService.sendSMS(customer._id, payload);
+  }
+
   getStyleClass(customer) {
     if (customer.served) {
       return "strike-through";

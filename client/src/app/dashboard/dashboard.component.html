@@ -22,6 +22,7 @@
 				<th>Phone #</th>
 				<th>Party</th>
 				<th>Served</th>
+				<th>Notify</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,6 +32,7 @@
 				<td>{{customer.phone}}</td>
 				<td>{{customer.party}}</td>
 				<td><span (click)="removeCustomer($event, customer)" class="glyphicon glyphicon-check text-success"></span></td>
+				<td><span (click)="sendSMS(customer)" class="glyphicon glyphicon-bell text-warning"></span></td>
 			</tr>
 		</tbody>
 	</table>

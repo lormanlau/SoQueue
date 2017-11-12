@@ -42,4 +42,10 @@ export class LoginregService {
     return this._http.get(`company/${companyId}/customer`)
         .toPromise();
   }
+
+  sendSMS(id, payload) {
+    let companyId = localStorage.getItem('companyId');
+    return this._http.post(`company/${companyId}/customer/${id}/sms`, payload)
+        .toPromise();
+  }
 }
