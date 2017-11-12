@@ -9,13 +9,11 @@ export class LoginregService {
     private _http: Http, 
     private _router: Router) { }
 
-  companyId: Number = 0
-
   loginUser(user) {
     return this._http.post('company/login', user)
     .map(res => {
-      let data = res.json();
-      this.companyId = data._id;
+        let data = res.json();
+        localStorage.setItem('companyId', data._body)
     })
     .toPromise();
   }
