@@ -14,7 +14,7 @@ module.exports = {
 		})
 	},
 	delete: function(req, res) {
-		Customer.findByIdAndRemove(req.params.id, (error, results) => {
+		Customer.findByIdAndUpdate(req.params.id, {$set:{"served" : true}}, (error, results) => {
 			if (error) {
 				res.status(500).json({message: "Could not delete customer"})
 			} else {
