@@ -18,10 +18,10 @@ module.exports = {
 		})
 	},
 	register: function(req, res){
-		console.log(req.body)
 		var company = new Company(req.body)
 		company.save()
 		.then(() => {
+			console.log(company)
 			res.status(200).json(company)
 		})
 		.catch(errors => { 

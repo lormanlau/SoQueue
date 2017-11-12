@@ -17,7 +17,8 @@ export class RegistrationComponent implements OnInit {
   constructor(private _LRService: LoginregService) { }
 
   register() {
-    this._LRService.registerUser(this.user)
+    var data = this._LRService.registerUser(this.user)
+    console.log(data)
   }
 
   ngOnInit() {
