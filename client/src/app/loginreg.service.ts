@@ -48,4 +48,9 @@ export class LoginregService {
     return this._http.post(`company/${companyId}/customer/${id}/sms`, payload)
         .toPromise();
   }
+
+  getAllBusinesses() {
+    return this._http.get('company')
+    .toPromise();
+  }
 }

@@ -12,6 +12,8 @@ import { LoginregService } from './loginreg.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomerViewComponent } from './customer-view/customer-view.component';
+import { LandingComponent } from './landing/landing.component';
+import { BusinessesComponent } from './businesses/businesses.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CustomerViewComponent } from './customer-view/customer-view.component';
     LoginComponent,
     RegistrationComponent,
     DashboardComponent,
-    CustomerViewComponent
+    CustomerViewComponent,
+    LandingComponent,
+    BusinessesComponent
   ],
   imports: [
     BrowserModule,

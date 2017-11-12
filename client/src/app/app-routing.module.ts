@@ -4,12 +4,16 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomerViewComponent } from './customer-view/customer-view.component';
+import { LandingComponent } from './landing/landing.component';
+import { BusinessesComponent } from './businesses/businesses.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: LandingComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'addtoqueue', component: CustomerViewComponent}
+  {path: 'addtoqueue', component: CustomerViewComponent},
+  {path: 'businesses', component: BusinessesComponent},
 ];
 
 @NgModule({
