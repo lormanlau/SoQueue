@@ -101,6 +101,12 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  cleanUp() {
+    this._LRService.cleanup(this.companyId).then( data => {
+      this.getCustomers();
+    });
+  }
+
   search(values){
     this._LRService.search(values, this.companyId)
     .then(data => {

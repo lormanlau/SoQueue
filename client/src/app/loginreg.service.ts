@@ -56,7 +56,12 @@ export class LoginregService {
 
   getAllBusinesses() {
     return this._http.get('company')
-    .toPromise();
+      .toPromise();
+  }
+
+  cleanup(companyId) {
+    return this._http.get(`company/${companyId}/customer/servedclear`)
+      .toPromise();
   }
 
   search(values: object, companyId) {
