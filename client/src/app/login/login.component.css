@@ -4,5 +4,18 @@
 .container{
     width: 600px;
     height: 700px;
-    padding: 100px 6%;
+    padding: 100px 6%;    
+}
+body{
+    
+}
+.btn{
+    margin-top: 50px;
+}
+.button{
+    text-align: center;
+    padding-top: 50px;
+}
+h2{
+    margin-bottom: 20px;
 }

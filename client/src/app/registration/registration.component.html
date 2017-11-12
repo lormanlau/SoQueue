@@ -3,69 +3,81 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <div class="container">
-  <h2>Registration</h2>
-  <form #form="ngForm">
-    <div class="form-group"> 
-      <p>
-        <label for="email">Email:</label>
-        <input
-          type="text"
-          name="email"
-          class="form-control"
-          required
-          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-          [(ngModel)]="user.email"
-          #email='ngModel'
-        >
-      </p>
-    </div>
+  <div class="row">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <h2>Create account</h2>
+          <form #form="ngForm">
+            <div class="form-group"> 
+              <p>
+                <span class="glyphicon glyphicon-envelope"></span>
+                <label for="email">Email:</label>
+                <input
+                  type="text"
+                  name="email"
+                  class="form-control"
+                  required
+                  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                  [(ngModel)]="user.email"
+                  #email='ngModel'
+                >
+              </p>
+            </div>
 
-    <div class="form-group"> 
-      <p>
-        <label for="email">Company:</label>
-        <input 
-          type="text"
-          name="company"
-          class="form-control"
-          required
-          [(ngModel)]="user.company">
-      </p>
-    </div>
+            <div class="form-group"> 
+              <p>
+                <span class="glyphicon glyphicon-briefcase"></span>
+                <label for="email">Company:</label>
+                <input 
+                  type="text"
+                  name="company"
+                  class="form-control"
+                  required
+                  [(ngModel)]="user.company">
+              </p>
+            </div>
 
-    <div class="form-group"> 
-      <p>
-        <label for="email">Password:</label>
-          <input 
-            type="password"
-            name="password"
-            class="form-control"
-            required
-            minlength="8"
-            [(ngModel)]="user.password"
-            #password='ngModel'
-          >
-      </p>
-    </div>
+            <div class="form-group"> 
+              <p>
+                <span class="glyphicon glyphicon-lock"></span>
+                  <label for="email">Password:</label>
+                    <input 
+                      type="password"
+                      name="password"
+                      class="form-control"
+                      required
+                      minlength="8"
+                      [(ngModel)]="user.password"
+                      #password='ngModel'>
+              </p>
+            </div>
 
-    <div class="form-group"> 
-      <p>
-        <label for="email">Confirm Password:</label>
-          <input 
-          type="confpassword"
-          name="confpassword"
-          class="form-control"
-          required
-          minlength="8"
-          [(ngModel)]="user.confpassword"
-          #confpassword='ngModel'
-        >
-      </p>
-    </div>
+            <div class="form-group"> 
+              <p>
+                <span class="glyphicon glyphicon-lock"></span>
+                  <label for="email">Confirm Password:</label>
+                    <input 
+                    type="confpassword"
+                    name="confpassword"
+                    class="form-control"
+                    required
+                    minlength="8"
+                    [(ngModel)]="user.confpassword"
+                    #confpassword='ngModel'>
+              </p>
+            </div>
 
-    <input 
-      (click)="register()"
-      [routerLink]="['dashboard']"
-      type="submit"  
-      value="Register">
-  </form>
-  <a [routerLink]="['/']">Already have an account. Login</a>
+            <input 
+              (click)="register()"
+              [routerLink]="['dashboard']"
+              class="btn btn-primary btn-block"
+              type="submit"  
+              value="Register">
+          </form>
+        <div class="button">
+          <a [routerLink]="['/']">Already have an account. Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
