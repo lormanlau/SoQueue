@@ -1,52 +1,71 @@
-<form #form="ngForm">
-  <p>
-    Email:
-    <input
-      type="text"
-      name="email"
-      required
-      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-      [(ngModel)]="user.email"
-      #email='ngModel'
-    >
-  </p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <p>
-    Company:
-    <input 
-      type="text"
-      name="company"
-      required
-      [(ngModel)]="user.company">
-  </p>
+<div class="container">
+  <h2>Registration</h2>
+  <form #form="ngForm">
+    <div class="form-group"> 
+      <p>
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          name="email"
+          class="form-control"
+          required
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+          [(ngModel)]="user.email"
+          #email='ngModel'
+        >
+      </p>
+    </div>
 
-  <p>
-    Password:
-    <input 
-      type="password"
-      name="password"
-      required
-      minlength="8"
-      [(ngModel)]="user.password"
-      #password='ngModel'
-    >
-  </p>
+    <div class="form-group"> 
+      <p>
+        <label for="email">Company:</label>
+        <input 
+          type="text"
+          name="company"
+          class="form-control"
+          required
+          [(ngModel)]="user.company">
+      </p>
+    </div>
 
-  <p>
-    Confirm Password:
+    <div class="form-group"> 
+      <p>
+        <label for="email">Password:</label>
+          <input 
+            type="password"
+            name="password"
+            class="form-control"
+            required
+            minlength="8"
+            [(ngModel)]="user.password"
+            #password='ngModel'
+          >
+      </p>
+    </div>
+
+    <div class="form-group"> 
+      <p>
+        <label for="email">Confirm Password:</label>
+          <input 
+          type="confpassword"
+          name="confpassword"
+          class="form-control"
+          required
+          minlength="8"
+          [(ngModel)]="user.confpassword"
+          #confpassword='ngModel'
+        >
+      </p>
+    </div>
+
     <input 
-    type="confpassword"
-    name="confpassword"
-    required
-    minlength="8"
-    [(ngModel)]="user.confpassword"
-    #confpassword='ngModel'
-  >
-  </p>
-  <input 
-    (click)="register()"
-    [routerLink]="['dashboard']"
-    type="submit"  
-    value="Register">
-</form>
-<a [routerLink]="['/']">Already have an account. Login</a>
+      (click)="register()"
+      [routerLink]="['dashboard']"
+      type="submit"  
+      value="Register">
+  </form>
+  <a [routerLink]="['/']">Already have an account. Login</a>
