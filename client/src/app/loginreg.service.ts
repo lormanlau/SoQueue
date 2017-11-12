@@ -44,7 +44,6 @@ export class LoginregService {
 
   getCompanyCustomers(companyId: String) {
     // let companyId = localStorage.getItem('companyId');
-    console.log(companyId)
     return this._http.get(`company/${companyId}/customer`)
         .toPromise();
   }
@@ -58,5 +57,18 @@ export class LoginregService {
   getAllBusinesses() {
     return this._http.get('company')
     .toPromise();
+  }
+
+  search(values: object, companyId) {
+    var url = ""
+    for (var keys in values){
+      if (values[keys] != undefined) {
+        url += keys + "=" + values[keys] + "&"
+      }
+    }
+    console.log(url)
+    return this._http.get(`/company/${companyId}/search?` + url)
+      .toPromise()
+
   }
 }

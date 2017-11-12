@@ -85,7 +85,9 @@ module.exports = {
 	listFilter: function(req, res) {
 		var search = req.url.substring(req.url.indexOf("?") + 1)
 		var params = querystring.parse(search)
+		params["name"] = {$regex : params["name"], $options: "i"};
 		params["companyId"] = req.params.company_id
+		console.log(params)
 		Customer.find(params, function(errors, results){
 			if (errors){
 				res.status(500).json({message: "search could not be done"})

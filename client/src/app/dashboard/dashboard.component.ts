@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
   customer: Boolean;
   companyId: String;
   company: Boolean = false;
-  private sub: any;
 
   getCustomer(){
     return this.customer || false;
@@ -26,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() { 
-    this.sub = this._route.params.subscribe(params => {
+    this._route.params.subscribe(params => {
        this.companyId = params['id'];
        this.company = false;
     });
@@ -60,7 +59,6 @@ export class DashboardComponent implements OnInit {
   getCustomers() {
   	this._LRService.getCompanyCustomers(this.companyId)
     .then(res => {
-      console.log(res)
   		this.customers = res.json();
   		}
   	);
@@ -99,6 +97,15 @@ export class DashboardComponent implements OnInit {
     else {
       return "";
     }
+  }
+
+  search(values){
+    this._LRService.search(values, this.companyId)
+    .then(data => {
+      console.log(data.json());
+      this.customers = data.json();
+    })
+
   }
 
   logout(){
