@@ -1,12 +1,18 @@
+
+.navbar{
+	color: white;
+	background-color: black;
+}
 table {
 	width: 100%;
 	// text-align: center;
 	margin: 20px 20px 20px 20px;
+
 }
 
 .strike-through {
 	text-decoration: line-through;
-	color: lightgray;
+	color: gray;
 
 	button {
 		display: none;
