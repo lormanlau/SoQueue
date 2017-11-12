@@ -1,4 +1,6 @@
 var mongoose = require('mongoose')
+var autoIncrement = require('mongoose-auto-increment');
+autoIncrement.initialize(mongoose.connection);
 
 var CustomerSchema = mongoose.Schema({
 	name: String,
@@ -11,4 +13,5 @@ var CustomerSchema = mongoose.Schema({
 	}
 }, {timestamps: true})
 
+CustomerSchema.plugin(autoIncrement.plugin, 'Customer');
 mongoose.model('Customer', CustomerSchema)
