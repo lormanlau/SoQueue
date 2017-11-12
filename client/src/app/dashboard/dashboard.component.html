@@ -1,3 +1,16 @@
-<p>
-  dashboard works!
-</p>
+<table>
+	<tr>
+		<th>Number</th>
+		<th>Name</th>
+		<th>Phone #</th>
+		<th>Party</th>
+		<th>Served</th>
+	</tr>
+	<tr *ngFor="let customer of customers">
+		<td>{{customer.id % 100}}</td>
+		<td>{{customer.name}}</td>
+		<td>{{customer.phone}}</td>
+		<td>{{customer.party}}</td>
+		<td><button (click)="removeCustomer($event, customer.id)">Done</button></td>
+	</tr>
+</table>

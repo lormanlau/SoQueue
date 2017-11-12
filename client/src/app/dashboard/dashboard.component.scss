@@ -1,0 +1,13 @@
+table {
+	width: 100%;
+	text-align: center;
+}
+
+.strike-through {
+	text-decoration: line-through;
+	color: lightgray;
+
+	button {
+		display: none;
+	}
+}

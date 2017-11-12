@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
     email: "",
     password: ""
   }
+  
   constructor(private _LRService: LoginregService) { }
 
   login() {
