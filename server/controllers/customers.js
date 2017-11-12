@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var request = require('request');
 var Customer = mongoose.model('Customer');
+var querystring = require('querystring')
 
 module.exports = {
 	create: function(req, res) {
@@ -39,7 +40,15 @@ module.exports = {
 	},
 	listFilter: function(req, res) {
 		var search = req.url.substring(req.url.indexOf("?") + 1)
-		res.status(200).json({message: search})
+		var params = querystring.parse(search)
+		params["companyId"] = req.params.company_id
+		Customer.find(params, function(errors, results){
+			if (errors){
+				res.status(500).json({message: "search could not be done"})
+			} else {
+				res.status(200).json(results)
+			}
+		})
 	},
 	sendSMS: function(req, resp) {
 		let payload = [

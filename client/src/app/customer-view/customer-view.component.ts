@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-view.component.css']
 })
 export class CustomerViewComponent implements OnInit {
-
+  hidden: Boolean;
   constructor() { }
 
   ngOnInit() {
+    this.hidden = false;
   }
 
+  addCustomer() {
+    this.hidden = true
+  }
 }
