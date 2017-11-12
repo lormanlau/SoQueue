@@ -4,5 +4,5 @@ var company = require('./../controllers/companys.js')
 
 module.exports = function(app){
 	app.post('/company/login', company.login);
-	
+	app.post('/company/register', company.register);
 }
