@@ -14,3 +14,48 @@
 		<td><button (click)="removeCustomer($event, customer.id)">Done</button></td>
 	</tr>
 </table>
+<form>
+	<div class="add-info">
+		<label for="name">Name:</label>
+	  <input
+	    type="text"
+	    name="name"
+	    class="form-control"
+	    required
+	    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+	    [(ngModel)]="newCustomer.name"
+	    #name='ngModel'
+	  >
+	</div>
+
+	<div class="add-info">
+		<label for="phone">Phone:</label>
+	  <input
+	    type="number"
+	    name="phone"
+	    class="form-control"
+	    required
+	    [(ngModel)]="newCustomer.phone"
+	    #phone='ngModel'
+	  >
+	</div>
+
+	<div class="add-info">
+		<label for="party">Party:</label>
+	  <input
+	    type="number"
+	    name="party"
+	    class="form-control"
+	    required
+	    [(ngModel)]="newCustomer.party"
+	    #party='ngModel'
+	  >
+	</div>
+
+	<input 
+    (click)="addCustomer()" 
+    type="submit"  
+    value="Add"
+  >
+	
+</form>

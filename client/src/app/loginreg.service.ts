@@ -19,8 +19,12 @@ export class LoginregService {
   }
 
   removeCustomer(userId) {
-    console.log("removing");
     return this._http.delete(`company/customer/${userId}`)
+        .toPromise();
+  }
+
+  addCustomer(user) {
+    return this._http.post('company/customer', user)
         .toPromise();
   }
 }

@@ -7,11 +7,27 @@ import { LoginregService } from './../loginreg.service';
   styleUrls: ['./dashboard.component.scss'],
   providers: [LoginregService]
 })
+
 export class DashboardComponent implements OnInit {
 
   constructor(private _LRService: LoginregService) { }
 
-  ngOnInit() { }
+  ngOnInit() { this.clear(); }
+
+  newCustomer: {}
+
+  addCustomer() {
+  	this._LRService.addCustomer(this.newCustomer);
+  	this.clear();
+  }
+
+  clear() {
+  	this.newCustomer = {
+	  	name: undefined,
+	  	phone: undefined,
+	  	party: undefined,
+	  };
+  }
 
   // TODO: test data
   customers: any[] = [{
