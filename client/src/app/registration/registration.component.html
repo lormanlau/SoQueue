@@ -62,32 +62,10 @@
                       class="form-control"
                       required
                       minlength="8"
-<<<<<<< HEAD
                       [(ngModel)]="user.confpassword"
                       #confpassword='ngModel'>
                 </p>
               </div>
-=======
-                      [(ngModel)]="user.password"
-                      #password='ngModel'>
-              </p>
-            </div>
-
-            <div class="form-group"> 
-              <p>
-                <span class="glyphicon glyphicon-lock"></span>
-                  <label for="email">Confirm Password:</label>
-                    <input 
-                    type="password"
-                    name="confpassword"
-                    class="form-control"
-                    required
-                    minlength="8"
-                    [(ngModel)]="user.confpassword"
-                    #confpassword='ngModel'>
-              </p>
-            </div>
->>>>>>> 5d8e78f3f96ce3b1b59feff5a64b00370db123c8
 
               <input 
                 (click)="register()"
