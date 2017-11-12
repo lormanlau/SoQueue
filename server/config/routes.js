@@ -10,6 +10,7 @@ module.exports = function(app){
 	app.post('/company/:company_id/customer', customer.create);
 	app.delete('/company/:company_id/customer/:id', customer.delete);
 	app.post('/company/:company_id/customer/:id/sms', customer.sendSMS);
+	app.get('/company', company.getAllCompanies);
 	app.all("*", (req, res, next) => {
 		res.sendFile(path.resolve("./../client/dist/index.html"))
 	});

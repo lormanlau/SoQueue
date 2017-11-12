@@ -27,5 +27,14 @@ module.exports = {
 		.catch(errors => { 
 			res.status(500).json({message: errors})
 		});
+	},
+	getAllCompanies: function(req, res){
+		Company.find({}, function(errors, results){
+			if(errors){
+				res.status(500).json(errors)
+			} else {
+				res.status(200).json(results)
+			}
+		})
 	}
 }
