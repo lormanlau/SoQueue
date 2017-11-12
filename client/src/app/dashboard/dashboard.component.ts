@@ -12,7 +12,10 @@ export class DashboardComponent implements OnInit {
 
   constructor(private _LRService: LoginregService) { }
 
-  ngOnInit() { this.getCustomers(); }
+  ngOnInit() { 
+  	this.clear();
+  	this.getCustomers();
+	}
 
   newCustomer: {}
 

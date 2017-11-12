@@ -19,7 +19,7 @@ module.exports = {
 				res.status(500).json({message: "Could not delete customer"})
 			} else {
 			    response = {
-			        message: "Todo successfully deleted",
+			        message: "successfully deleted",
 			        id: results._id
 	    		};
 	    		res.status(200).json(response);
