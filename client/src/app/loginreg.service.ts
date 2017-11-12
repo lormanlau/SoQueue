@@ -6,15 +6,25 @@ import 'rxjs';
 export class LoginregService {
   constructor(private _http: Http) { }
 
-  loginUser(user){
+  loginUser(user) {
     return this._http.post('company/login', user)
     .map(data => data.json())
     .toPromise();
   }
 
-  registerUser(user){
+  registerUser(user) {
     return this._http.post('company/register', user)
     .map(data => data.json())
     .toPromise();
+  }
+
+  removeCustomer(userId) {
+    return this._http.delete(`company/customer/${userId}`)
+        .toPromise();
+  }
+
+  addCustomer(user) {
+    return this._http.post('company/customer', user)
+        .toPromise();
   }
 }

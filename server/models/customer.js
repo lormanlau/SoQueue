@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 
 var CustomerSchema = mongoose.Schema({
-	number: Number,
+	name: String,
 	phone: String,
 	numOfPeople: Number
 }, {timestamps: true})
