@@ -51,12 +51,14 @@
 			class="btn btn-default btn-sm"
 		>
 	</form>
+	<a [routerLink]="['/businesses']" *ngIf="getCustomer()">Go Back To Businesses</a>
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>Number</th>
-				<th *ngIf="company">Name</th>
-				<th *ngIf="company">Phone #</th>
+				<th>Name</th>
+				<th *ngIf="!getCustomer()">Phone #</th>
 				<th>Party</th>
 				<th *ngIf="!getCustomer()">Served</th>
 				<th *ngIf="!getCustomer()">Notify</th>
@@ -65,8 +67,8 @@
 		<tbody>
 			<tr *ngFor="let customer of customers" [attr.class]="getStyleClass(customer)">
 				<td>{{customer._id}}</td>
-				<td *ngIf="company">{{customer.name}}</td>
-				<td *ngIf="company">{{customer.phone}}</td>
+				<td>{{customer.name}}</td>
+				<td *ngIf="!getCustomer()">{{customer.phone}}</td>
 				<td>{{customer.party}}</td>
 				<td *ngIf="!getCustomer()"><span (click)="removeCustomer($event, customer)" class="glyphicon glyphicon-check text-success"></span></td>
 				<td *ngIf="!getCustomer()"><span (click)="sendSMS(customer)" class="glyphicon glyphicon-bell text-warning"></span></td>
