@@ -16,6 +16,7 @@
     "https-post": "^0.1.1",
     "mongoose": "^4.13.1",
     "mongoose-auto-increment": "^5.0.1",
+    "nexmo": "^2.0.2",
     "request": "^2.83.0"
   }
 }

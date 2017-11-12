@@ -1,5 +1,13 @@
 var customer = require('./../controllers/customers.js');
 var request = require('request');
+const Nexmo = require('nexmo')
+var mongoose = require('mongoose')
+var Customer = mongoose.model('Customer')
+
+const nexmo = new Nexmo({
+  apiKey: "72fd6367",
+  apiSecret: "c3666ff9d604de25"
+})
 
 module.exports = {
 	handleInboundSMS: function(req, res){
@@ -47,7 +55,19 @@ module.exports = {
 		    	'Content-Type': 'application/x-www-form-urlencoded'
 		    }
 		}, function (error, response, body){
-		    resp.send(response.body);
+			if(error){
+				console.log(error)
+				resp.status(500).json({message: "sms error"})
+			} else {
+				resp.send(response.body);
+			}
 		});
-	}
+	},
+	sendtexttest: function(req, res){
+		const from = "2013514403"
+		const to = req.body.phone
+		const text = req.body.text
+
+		nexmo.message.sendSms(from, to, text)
+		}
 }
