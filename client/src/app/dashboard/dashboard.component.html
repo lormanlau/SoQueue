@@ -14,7 +14,7 @@
 			</ul>
 		</div>
 	</nav>
-	<form class="form-inline" #form="ngForm">
+	<form *ngIf="company" class="form-inline" #form="ngForm">
 		<div class="add-info">
 			  <div class="form-group">
 					<label for="name">Name:</label>
