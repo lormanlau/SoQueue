@@ -18,7 +18,8 @@ export class CustomerViewComponent implements OnInit {
   }
 
   addCustomer() {
+    let companyId = localStorage.getItem('companyId');
     this.hidden = true;
-    this._LRService.addCustomer(this.newCustomer);
+    this._LRService.addCustomer(this.newCustomer, companyId);
   }
 }
