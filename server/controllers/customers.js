@@ -39,9 +39,6 @@ module.exports = {
 	},
 	listFilter: function(req, res) {
 		var search = req.url.substring(req.url.indexOf("?") + 1)
-		search = search.replace("=", ":")
-		search = search.replace("&", ",")
-		search = "{" + search + "}";
 		res.status(200).json({message: search})
 	},
 	sendSMS: function(req, resp) {
