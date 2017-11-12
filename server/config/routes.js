@@ -9,6 +9,7 @@ module.exports = function(app){
 	app.get('/company/:company_id/customer', customer.listAll);
 	app.get('/company/:company_id/search', customer.listFilter);
 	app.post('/company/:company_id/customer', customer.create);
+	app.delete('/company/:company_id/customer/servedclear', customer.removeSeveredCustomers);
 	app.delete('/company/:company_id/customer/:id', customer.delete);
 	app.post('/company/:company_id/customer/:id/sms', nexmo.sendSMS);
 	app.get('/company', company.getAllCompanies);

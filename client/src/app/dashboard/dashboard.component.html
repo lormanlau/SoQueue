@@ -4,7 +4,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <body>
-	<form *ngIf="company" class="form-inline" #form="ngForm">
+	<!-- <form *ngIf="company" class="form-inline" #form="ngForm">
 		<div class="add-info">
 			  <div class="form-group">
 					<label for="name">Name:</label>
@@ -50,31 +50,7 @@
 			value="Search"
 			class="btn btn-default btn-sm"
 		>
-	</form>
-	<a [routerLink]="['/businesses']" *ngIf="getCustomer()">Go Back To Businesses</a>
-
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Number</th>
-				<th>Name</th>
-				<th *ngIf="!getCustomer()">Phone #</th>
-				<th>Party</th>
-				<th *ngIf="!getCustomer()">Served</th>
-				<th *ngIf="!getCustomer()">Notify</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let customer of customers" [attr.class]="getStyleClass(customer)">
-				<td>{{customer._id}}</td>
-				<td>{{customer.name}}</td>
-				<td *ngIf="!getCustomer()">{{customer.phone}}</td>
-				<td>{{customer.party}}</td>
-				<td *ngIf="!getCustomer()"><span (click)="removeCustomer($event, customer)" class="glyphicon glyphicon-check text-success"></span></td>
-				<td *ngIf="!getCustomer()"><span (click)="sendSMS(customer)" class="glyphicon glyphicon-bell text-warning"></span></td>
-			</tr>
-		</tbody>
-	</table>
+	</form> -->
 	<form class="form-inline">
 		<div class="add-info">
 			  <div class="form-group">
@@ -126,5 +102,30 @@
 		>
 		
 	</form>
+	<a [routerLink]="['/businesses']" *ngIf="getCustomer()">Go Back To Businesses</a>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Number</th>
+				<th>Name</th>
+				<th *ngIf="!getCustomer()">Phone #</th>
+				<th>Party</th>
+				<th *ngIf="!getCustomer()">Served</th>
+				<th *ngIf="!getCustomer()">Notify</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let customer of customers" [attr.class]="getStyleClass(customer)">
+				<td>{{customer._id}}</td>
+				<td>{{customer.name}}</td>
+				<td *ngIf="!getCustomer()">{{customer.phone}}</td>
+				<td>{{customer.party}}</td>
+				<td *ngIf="!getCustomer()"><span (click)="removeCustomer($event, customer)" class="glyphicon glyphicon-check text-success"></span></td>
+				<td *ngIf="!getCustomer()"><span (click)="sendSMS(customer)" class="glyphicon glyphicon-bell text-warning"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	
 </body>
 </html>

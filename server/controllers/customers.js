@@ -96,5 +96,14 @@ module.exports = {
 				res.status(200).json(results)
 			}
 		})
+	},
+	removeSeveredCustomers: function (req, res){
+		Customer.remove({companyId: req.params.company_id, served: true}, function(error){
+			if (error){
+				res.status(500).json({message: "delete serve customer error"})
+			} else {
+				res.status(200).json({message: "successfully deleted"})
+			}
+		})
 	}
 }
