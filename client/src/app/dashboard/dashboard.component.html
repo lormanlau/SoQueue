@@ -1,61 +1,87 @@
-<table>
-	<tr>
-		<th>Number</th>
-		<th>Name</th>
-		<th>Phone #</th>
-		<th>Party</th>
-		<th>Served</th>
-	</tr>
-	<tr *ngFor="let customer of customers">
-		<td>{{customer.id % 100}}</td>
-		<td>{{customer.name}}</td>
-		<td>{{customer.phone}}</td>
-		<td>{{customer.party}}</td>
-		<td><button (click)="removeCustomer($event, customer.id)">Done</button></td>
-	</tr>
-</table>
-<form>
-	<div class="add-info">
-		<label for="name">Name:</label>
-	  <input
-	    type="text"
-	    name="name"
-	    class="form-control"
-	    required
-	    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-	    [(ngModel)]="newCustomer.name"
-	    #name='ngModel'
-	  >
-	</div>
+<html>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<body>
+	<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">SoQueue</a>
+				</div>
+			<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Number</th>
+				<th>Name</th>
+				<th>Phone #</th>
+				<th>Party</th>
+				<th>Served</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let customer of customers">
+				<td>{{customer.id % 100}}</td>
+				<td>{{customer.name}}</td>
+				<td>{{customer.phone}}</td>
+				<td>{{customer.party}}</td>
+				<td><button (click)="removeCustomer($event, customer.id)">Done</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<form class="form-inline">
+		<div class="add-info">
+			  <div class="form-group">
+					<label for="name">Name:</label>
+				</div>
+					<input
+						type="text"
+						name="name"
+						class="form-control"
+						required
+						pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+						[(ngModel)]="newCustomer.name"
+						#name='ngModel'
+					>
+		</div>
 
-	<div class="add-info">
-		<label for="phone">Phone:</label>
-	  <input
-	    type="number"
-	    name="phone"
-	    class="form-control"
-	    required
-	    [(ngModel)]="newCustomer.phone"
-	    #phone='ngModel'
-	  >
-	</div>
+		<div class="add-info">
+				<div class="form-group">
+					<label for="name">Phone:</label>
+				</div>
+					<input
+						type="number"
+						name="phone"
+						class="form-control"
+						required
+						[(ngModel)]="newCustomer.phone"
+						#phone='ngModel'
+					>
+		</div>
 
-	<div class="add-info">
-		<label for="party">Party:</label>
-	  <input
-	    type="number"
-	    name="party"
-	    class="form-control"
-	    required
-	    [(ngModel)]="newCustomer.party"
-	    #party='ngModel'
-	  >
-	</div>
+		<div class="add-info">
+			<label for="party">Party:</label>
+			<input
+				type="number"
+				name="party"
+				class="form-control"
+				required
+				[(ngModel)]="newCustomer.party"
+				#party='ngModel'
+			>
+		</div>
 
-	<input 
-    (click)="addCustomer()" 
-    type="submit"  
-    value="Add"
-  >
-	
-</form>
+		<input 
+			(click)="addCustomer()" 
+			type="submit"  
+			value="Add"
+		>
+		
+	</form>
+</body>
+</html>
