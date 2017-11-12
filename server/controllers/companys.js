@@ -8,7 +8,7 @@ module.exports = {
 				res.status(500).json(errors)
 			} else {
 				if (results == null){
-					res.status(500).json({message: "Wrong password or email"})
+					res.status(401).json({message: "Wrong password or email"})
 				} else if (results["password"] == req.body.password){
 					res.status(200).json(results)
 				} else {
@@ -18,10 +18,11 @@ module.exports = {
 		})
 	},
 	register: function(req, res){
+		console.log(req.body)
 		var company = new Company(req.body)
 		company.save()
 		.then(() => {
-			res.status(200).json({message: "successfully created"})
+			res.status(200).json(company)
 		})
 		.catch(errors => { 
 			res.status(500).json({message: errors})

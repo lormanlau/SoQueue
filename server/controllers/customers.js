@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var request = require('request');
 var Customer = mongoose.model('Customer');
 
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
 			res.status(500).json({message: "save errors"})
 		})
 	},
-	delete: function(req, res){
+	delete: function(req, res) {
 		Customer.findByIdAndRemove(req.params.id, (error, results) => {
 			if (error) {
 				res.status(500).json({message: "Could not delete customer"})
@@ -25,7 +26,7 @@ module.exports = {
     		}
 		});
 	},
-	listAll: function(req, res){
+	listAll: function(req, res) {
 		Customer.find({}, function(error, results){
 			if (error) {
 				res.status(500).json({message: "could not find all customers"})
@@ -33,5 +34,25 @@ module.exports = {
 				res.status(200).json(results)
 			}
 		})
+	},
+	sendSMS: function(req, resp) {
+		let payload = [
+			'api_key=72fd6367',
+			'api_secret=c3666ff9d604de25',
+			`to= ${req.body.phone}`,
+			'from=12013514403',
+			`text=${req.body.text}`
+			].join('&');
+
+		request({
+		    url: 'https://rest.nexmo.com/sms/json',
+		    method: 'POST',
+		    body: payload,
+		    headers: {
+		    	'Content-Type': 'application/x-www-form-urlencoded'
+		    }
+		}, function (error, response, body){
+		    resp.send(response.body);
+		});
 	}
 }
