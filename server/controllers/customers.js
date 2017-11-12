@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var request = require('request');
 var Customer = mongoose.model('Customer');
 var querystring = require('querystring')
 
@@ -16,12 +15,57 @@ module.exports = {
 		})
 	},
 	delete: function(req, res) {
-		Customer.findByIdAndUpdate(req.params.id, {$set:{"served" : true}}, (error, results) => {
+		let phone = req.query.phone;
+
+		console.log("phone ", phone);
+
+		if (phone) {
+			Customer.findById(req.params.id, (error, result) => {
+				if (error) {
+					res.status(500).json({message: "Could not find customer"})
+				} else {
+					console.log(result.confirmed);
+					if (result.confirmed) {
+						console.log("Did not delete confirmed.");
+						return;
+					}
+					console.log(result);
+
+					Customer.findByIdAndUpdate(req.params.id, { $set:{ "served" : true } }, (error, results) => {
+						if (error) {
+							res.status(500).json({message: "Could not delete customer"})
+						} else {
+						    response = {
+						        message: "successfully deleted",
+						        id: results._id
+				    		};
+				    		res.status(200).json(response);
+			    		}
+			    		console.log("trying to delete");
+					});
+	    		}
+			});
+		} else {
+			Customer.findByIdAndUpdate(req.params.id, { $set:{ "served" : true } }, (error, results) => {
+				if (error) {
+					res.status(500).json({message: "Could not delete customer"})
+				} else {
+				    response = {
+				        message: "successfully deleted",
+				        id: results._id
+		    		};
+		    		res.status(200).json(response);
+	    		}
+			});
+		}
+	},
+	confirm: function(req, res) {
+		Customer.findOneAndUpdate({ "phone" : req.params.phone }, { $set:{ "confirmed" : true } }, (error, results) => {
 			if (error) {
-				res.status(500).json({message: "Could not delete customer"})
+				res.status(500).json({message: "Could not confirm customer"})
 			} else {
 			    response = {
-			        message: "successfully deleted",
+			        message: "successfully confirmed",
 			        id: results._id
 	    		};
 	    		res.status(200).json(response);
@@ -49,25 +93,5 @@ module.exports = {
 				res.status(200).json(results)
 			}
 		})
-	},
-	sendSMS: function(req, resp) {
-		let payload = [
-			'api_key=72fd6367',
-			'api_secret=c3666ff9d604de25',
-			`to= ${req.body.phone}`,
-			'from=12013514403',
-			`text=${req.body.text}`
-			].join('&');
-
-		request({
-		    url: 'https://rest.nexmo.com/sms/json',
-		    method: 'POST',
-		    body: payload,
-		    headers: {
-		    	'Content-Type': 'application/x-www-form-urlencoded'
-		    }
-		}, function (error, response, body){
-		    resp.send(response.body);
-		});
 	}
 }

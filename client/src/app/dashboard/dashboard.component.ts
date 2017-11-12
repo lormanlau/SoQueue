@@ -67,9 +67,16 @@ export class DashboardComponent implements OnInit {
     
     let payload = {
       phone: customer.phone,
-      text: `Hello ${customer.name}, your table for ${customer.party} is almost ready. Please be ready for your name to be called in 15 mins.`
+      text: `Hello ${customer.name}, your table for ${customer.party} is almost ready. Please respond with 'confirm' or 'cancel' in the next 5 minutes or you will forfeit your table.`
     }
-    this._LRService.sendSMS(customer._id, payload);
+    this._LRService.sendSMS(customer._id, payload).then(res => {
+      let data = res.json();
+
+      setTimeout(() => {
+        console.log("Customer expired");
+        this._LRService.customerExpired(customer);
+      }, 30000); // 30 sec
+    });
   }
 
   getStyleClass(customer) {

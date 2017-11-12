@@ -30,6 +30,12 @@ export class LoginregService {
         .toPromise();
   }
 
+  customerExpired(customer) {
+    let companyId = localStorage.getItem('companyId');
+    return this._http.delete(`company/${companyId}/customer/${customer._id}?phone=${customer.phone}`)
+        .toPromise();
+  }
+
   addCustomer(customer) {
     let companyId = localStorage.getItem('companyId');
     return this._http.post(`company/${companyId}/customer`, customer)

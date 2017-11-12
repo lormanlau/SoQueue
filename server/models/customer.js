@@ -10,6 +10,10 @@ var CustomerSchema = mongoose.Schema({
 	served: {
 	    type: Boolean,
 	    default: false
+	},
+	confirmed: {
+	    type: Boolean,
+	    default: false
 	}
 }, {timestamps: true})
 
