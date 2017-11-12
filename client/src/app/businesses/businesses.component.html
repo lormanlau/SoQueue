@@ -4,8 +4,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <body>
-<div *ngFor="let business of businesses">
-  <img src="./../assets/images/people.png">
-  <a [routerLink]="['/addtoqueue', business._id]">{{business.company}}</a>
-</div>
+	<div class="company" *ngFor="let business of businesses">
+			<a [routerLink]="['/addtoqueue', business._id]"><h2>{{business.company}}</h2>
+			<img src="./../assets/images/list.png"></a>
+	</div>
 </body>

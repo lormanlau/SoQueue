@@ -5,9 +5,16 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <body>
 	<div class="center">
-		<h1>I am a...</h1>
-		<button type="submit" class="btn btn-primary btn-lg" [routerLink]="['/businesses']">Customer</button>
-		<button type="submit" class="btn btn-primary btn-lg" [routerLink]="['/login']">Business Owner</button>
+		<h1>SELECT USER</h1>
+		<div class="customer">
+				<h3>Customer</h3>
+			<button type="submit" class="btn btn-primary btn-lg" [routerLink]="['/businesses']"><img src="./../assets/images/customer.png"></button>
+		</div>
+
+		<div class="customer">
+				<h3>Business</h3>
+				<button type="submit" class="btn btn-primary btn-lg" [routerLink]="['/login']"><img src="./../assets/images/business.png"></button>
+			</div>
 	</div>
 </body>
 
