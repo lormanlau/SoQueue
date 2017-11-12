@@ -11,29 +11,29 @@
             <div class="form-group"> 
               <p>
                 <span class="glyphicon glyphicon-envelope"></span>
-                <label for="email">Email:</label>
-                <input
-                  type="text"
-                  name="email"
-                  class="form-control"
-                  required
-                  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-                  [(ngModel)]="user.email"
-                  #email='ngModel'
-                >
+                  <label for="email">Email:</label>
+                    <input
+                      type="text"
+                      name="email"
+                      class="form-control"
+                      required
+                      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                      [(ngModel)]="user.email"
+                      #email='ngModel'
+                    >
               </p>
             </div>
 
             <div class="form-group"> 
               <p>
                 <span class="glyphicon glyphicon-briefcase"></span>
-                <label for="email">Company:</label>
-                <input 
-                  type="text"
-                  name="company"
-                  class="form-control"
-                  required
-                  [(ngModel)]="user.company">
+                  <label for="email">Company:</label>
+                    <input 
+                      type="text"
+                      name="company"
+                      class="form-control"
+                      required
+                      [(ngModel)]="user.company">
               </p>
             </div>
 
