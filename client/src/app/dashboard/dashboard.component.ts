@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
 	  	name: undefined,
 	  	phone: undefined,
 	  	party: undefined,
+      companyId: localStorage.getItem('companyId')
 	  };
   }
 
@@ -43,9 +44,9 @@ export class DashboardComponent implements OnInit {
   	);
   }
 
-  removeCustomer(event, userId) {
+  removeCustomer(event, customer) {
   	let element = event.target;
   	element.closest('tr').classList.add("strike-through");
-  	this._LRService.removeCustomer(userId);
+  	this._LRService.removeCustomer(customer._id);
   }
 }

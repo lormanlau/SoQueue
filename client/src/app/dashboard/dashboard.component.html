@@ -25,12 +25,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let customer of customers">
+			<tr *ngFor="let customer of customers" [attr.class]="customer.served == true">
 				<td>{{customer._id}}</td>
 				<td>{{customer.name}}</td>
 				<td>{{customer.phone}}</td>
 				<td>{{customer.party}}</td>
-				<td><button (click)="removeCustomer($event, customer._id)">Done</button></td>
+				<td><button (click)="removeCustomer($event, customer)">Done</button></td>
 			</tr>
 		</tbody>
 	</table>
