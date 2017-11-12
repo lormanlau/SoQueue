@@ -38,6 +38,7 @@ export class LoginregService {
 
   getCompanyCustomers() {
     let companyId = localStorage.getItem('companyId');
+    console.log(companyId)
     return this._http.get(`company/${companyId}/customer`)
         .toPromise();
   }
