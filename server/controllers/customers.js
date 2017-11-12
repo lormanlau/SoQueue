@@ -86,6 +86,7 @@ module.exports = {
 		var search = req.url.substring(req.url.indexOf("?") + 1)
 		var params = querystring.parse(search)
 		params["name"] = {$regex : params["name"], $options: "i"};
+		params["phone"] = {$regex : params["phone"], $options: "i"}
 		params["companyId"] = req.params.company_id
 		console.log(params)
 		Customer.find(params, function(errors, results){
