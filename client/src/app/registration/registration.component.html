@@ -1,0 +1,52 @@
+<form #form="ngForm">
+  <p>
+    Email:
+    <input
+      type="text"
+      name="email"
+      required
+      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+      [(ngModel)]="user.email"
+      #email='ngModel'
+    >
+  </p>
+
+  <p>
+    Company:
+    <input 
+      type="text"
+      name="company"
+      required
+      [(ngModel)]="user.company">
+  </p>
+
+  <p>
+    Password:
+    <input 
+      type="password"
+      name="password"
+      required
+      minlength="8"
+      [(ngModel)]="user.password"
+      #password='ngModel'
+    >
+  </p>
+
+  <p>
+    Confirm Password:
+    <input 
+    type="confpassword"
+    name="confpassword"
+    required
+    minlength="8"
+    [(ngModel)]="user.confpassword"
+    #confpassword='ngModel'
+  >
+  </p>
+  <input 
+    (click)="register()"
+    [routerLink]="['dashboard']"
+    type="submit"  
+    value="Register">
+</form>
+<a [routerLink]="['/']">Already have an account. Login</a>
