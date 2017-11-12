@@ -49,4 +49,13 @@ export class DashboardComponent implements OnInit {
   	element.closest('tr').classList.add("strike-through");
   	this._LRService.removeCustomer(customer._id);
   }
+
+  getStyleClass(customer) {
+    if (customer.served) {
+      return "strike-through";
+    }
+    else {
+      return "";
+    }
+  }
 }
