@@ -3,6 +3,7 @@
 	color: white;
 	background-color: black;
 }
+
 table {
 	width: 100%;
 	// text-align: center;
@@ -17,8 +18,22 @@ table {
 	button {
 		display: none;
 	}
+
+	.glyphicon {
+		pointer-events: none;
+		cursor: initial;
+	}
+
+	.text-success {
+		color: lightgrey;
+	}
+}
+
+.glyphicon {
+	cursor: pointer;
 }
 
 .add-info {
 	display: inline-block;
+	margin: 20px;
 }

@@ -30,7 +30,7 @@
 				<td>{{customer.name}}</td>
 				<td>{{customer.phone}}</td>
 				<td>{{customer.party}}</td>
-				<td><button (click)="removeCustomer($event, customer)">Done</button></td>
+				<td><span (click)="removeCustomer($event, customer)" class="glyphicon glyphicon-check text-success"></span></td>
 			</tr>
 		</tbody>
 	</table>
@@ -80,6 +80,7 @@
 			(click)="addCustomer()" 
 			type="submit"  
 			value="Add"
+			class="btn btn-default btn-sm"
 		>
 		
 	</form>
