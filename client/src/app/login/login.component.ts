@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _LRService: LoginregService,
-    private _router: Router
+    private _router: Router,
     ) { }
 
   login() {

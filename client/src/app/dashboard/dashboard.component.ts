@@ -37,9 +37,10 @@ export class DashboardComponent implements OnInit {
   }
 
   getCustomers() {
-  	this._LRService.getCompanyCustomers().then(
-  		res => {
-  			this.customers = res.json();
+  	this._LRService.getCompanyCustomers()
+    .then(res => {
+      console.log(res)
+  		this.customers = res.json();
   		}
   	);
   }

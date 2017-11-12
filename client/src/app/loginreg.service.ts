@@ -9,8 +9,8 @@ export class LoginregService {
   loginUser(user) {
     return this._http.post('company/login', user)
     .map(res => {
-      let data = res.json();
-      localStorage.setItem('companyId', data._id);
+        let data = res.json();
+        localStorage.setItem('companyId', data._id)
     })
     .toPromise();
   }
@@ -38,6 +38,7 @@ export class LoginregService {
 
   getCompanyCustomers() {
     let companyId = localStorage.getItem('companyId');
+    console.log(companyId)
     return this._http.get(`company/${companyId}/customer`)
         .toPromise();
   }

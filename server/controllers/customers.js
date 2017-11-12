@@ -4,6 +4,7 @@ var Customer = mongoose.model('Customer');
 
 module.exports = {
 	create: function(req, res) {
+		console.log(req.body)
 		var customer = new Customer(req.body)
 		customer.save()
 		.then(()=> {
@@ -27,13 +28,18 @@ module.exports = {
 		});
 	},
 	listAll: function(req, res) {
-		Customer.find({}, function(error, results){
+		let id = req.params.company_id
+		Customer.find({companyId: id}, function(error, results){
 			if (error) {
 				res.status(500).json({message: "could not find all customers"})
 			} else {
 				res.status(200).json(results)
 			}
 		})
+	},
+	listFilter: function(req, res) {
+		var search = req.url.substring(req.url.indexOf("?") + 1)
+		res.status(200).json({message: search})
 	},
 	sendSMS: function(req, resp) {
 		let payload = [

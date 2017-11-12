@@ -4,7 +4,7 @@ var CustomerSchema = mongoose.Schema({
 	name: String,
 	phone: String,
 	party: Number,
-	companyId: Number,
+	companyId: String,
 	served: {
 	    type: Boolean,
 	    default: false

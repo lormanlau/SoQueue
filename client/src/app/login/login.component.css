@@ -15,10 +15,14 @@ img{
     height: 700px;
     /* box-shadow: 7px 7px 7px 7px;  */
 }
+<<<<<<< HEAD
 .error{
   color: red;  
   margin-top: 10px;
   margin-bottom: 10px;
+=======
+body{
+>>>>>>> 5d8e78f3f96ce3b1b59feff5a64b00370db123c8
 }
 .btn{
     margin-top: 50px;
