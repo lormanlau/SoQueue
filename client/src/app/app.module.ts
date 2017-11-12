@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomerViewComponent } from './customer-view/customer-view.component';
 import { LandingComponent } from './landing/landing.component';
 import { BusinessesComponent } from './businesses/businesses.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BusinessesComponent } from './businesses/businesses.component';
     DashboardComponent,
     CustomerViewComponent,
     LandingComponent,
-    BusinessesComponent
+    BusinessesComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
