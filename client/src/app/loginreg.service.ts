@@ -11,4 +11,10 @@ export class LoginregService {
     .map(data => data.json())
     .toPromise();
   }
+
+  registerUser(user){
+    return this._http.post('company/register', user)
+    .map(data => data.json())
+    .toPromise();
+  }
 }

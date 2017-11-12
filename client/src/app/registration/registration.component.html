@@ -10,7 +10,16 @@
       #email='ngModel'
     >
   </p>
-  <div *ngIf='!email.valid && email.dirty'>Email must be valid</div>
+
+  <p>
+    Company:
+    <input 
+      type="text"
+      name="company"
+      required
+      [(ngModel)]="user.company">
+  </p>
+
   <p>
     Password:
     <input 
@@ -22,11 +31,21 @@
       #password='ngModel'
     >
   </p>
+
+  <p>
+    Confirm Password:
+    <input 
+    type="confpassword"
+    name="confpassword"
+    required
+    minlength="8"
+    [(ngModel)]="user.confpassword"
+    #confpassword='ngModel'
+  >
+  </p>
   <input 
-    (click)="login()" 
+    (click)="register()"
     [routerLink]="['dashboard']"
     type="submit"  
-    value="Login"
-  >
+    value="Register">
 </form>
-<a [routerLink]="['/registration']">Don't have an account? Register</a>
