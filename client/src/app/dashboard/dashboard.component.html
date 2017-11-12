@@ -26,11 +26,11 @@
 		</thead>
 		<tbody>
 			<tr *ngFor="let customer of customers">
-				<td>{{customer.id % 100}}</td>
+				<td>{{customer._id}}</td>
 				<td>{{customer.name}}</td>
 				<td>{{customer.phone}}</td>
 				<td>{{customer.party}}</td>
-				<td><button (click)="removeCustomer($event, customer.id)">Done</button></td>
+				<td><button (click)="removeCustomer($event, customer._id)">Done</button></td>
 			</tr>
 		</tbody>
 	</table>

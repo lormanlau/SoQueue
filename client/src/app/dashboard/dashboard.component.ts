@@ -19,9 +19,12 @@ export class DashboardComponent implements OnInit {
 
   newCustomer: {}
 
+  customers: any[] = []
+
   addCustomer() {
   	this._LRService.addCustomer(this.newCustomer);
   	this.clear();
+  	this.getCustomers();
   }
 
   clear() {
@@ -31,20 +34,6 @@ export class DashboardComponent implements OnInit {
 	  	party: undefined,
 	  };
   }
-
-  // TODO: test data
-  customers: any[] = [{
-  	name: "Rosemary",
-  	phone: 14088278178,
-  	party: 4,
-  	id: 0
-  },
-  {
-  	name: "Lucy",
-  	phone: 14088278178,
-  	party: 3,
-  	id: 1
-  }]
 
   getCustomers() {
   	this._LRService.getCompanyCustomers().then(
