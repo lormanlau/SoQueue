@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private _LRService: LoginregService) { }
 
-  ngOnInit() { this.clear(); }
+  ngOnInit() { this.getCustomers(); }
 
   newCustomer: {}
 
@@ -42,6 +42,14 @@ export class DashboardComponent implements OnInit {
   	party: 3,
   	id: 1
   }]
+
+  getCustomers() {
+  	this._LRService.getCompanyCustomers().then(
+  		res => {
+  			this.customers = res.json();
+  		}
+  	);
+  }
 
   removeCustomer(event, userId) {
   	let element = event.target;

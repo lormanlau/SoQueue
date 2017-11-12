@@ -6,9 +6,15 @@ import 'rxjs';
 export class LoginregService {
   constructor(private _http: Http) { }
 
+  companyId: Number = 0
+
   loginUser(user) {
     return this._http.post('company/login', user)
-    .map(data => data.json())
+    .map(res => {
+      let data = res.json();
+      this.companyId = data.id;
+
+    })
     .toPromise();
   }
 
@@ -18,13 +24,18 @@ export class LoginregService {
     .toPromise();
   }
 
-  removeCustomer(userId) {
-    return this._http.delete(`company/customer/${userId}`)
+  removeCustomer(customerId) {
+    return this._http.delete(`company/${this.companyId}/customer/${customerId}`)
         .toPromise();
   }
 
-  addCustomer(user) {
-    return this._http.post('company/customer', user)
+  addCustomer(customer) {
+    return this._http.post(`company/${this.companyId}/customer`, customer)
+        .toPromise();
+  }
+
+  getCompanyCustomers() {
+    return this._http.get(`company/${this.companyId}/customer`)
         .toPromise();
   }
 }
