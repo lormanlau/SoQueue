@@ -60,7 +60,7 @@ export class LoginregService {
   }
 
   cleanup(companyId) {
-    return this._http.get(`company/${companyId}/customer/servedclear`)
+    return this._http.delete(`company/${companyId}/customer/servedclear`)
       .toPromise();
   }
 
