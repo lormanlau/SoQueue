@@ -19,7 +19,7 @@ export class LoginregService {
   }
 
   registerUser(user) {
-    return this._http.post('company/register', user)
+    return this._http.post('company/register', user, {withCredentials: true})
     .map(data => data.json())
     .toPromise();
   }
