@@ -13,14 +13,17 @@ export class LoginregService {
     return this._http.post('company/login', user)
     .map(res => {
         let data = res.json();
-        localStorage.setItem('companyId', data._body)
+        localStorage.setItem('companyId', data._id)
     })
     .toPromise();
   }
 
   registerUser(user) {
     return this._http.post('company/register', user, {withCredentials: true})
-    .map(data => data.json())
+    .map(res => {
+        let data = res.json();
+        localStorage.setItem('companyId', data._id);
+    })
     .toPromise();
   }
 
