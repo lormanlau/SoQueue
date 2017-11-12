@@ -1,4 +1,4 @@
 <div *ngFor="let business of businesses">
   <img src="./../assets/images/people.png">
-  <h3>{{business.company}}</h3>
+  <a [routerLink]="['/addtoqueue', business._id]">{{business.company}}</a>
 </div>

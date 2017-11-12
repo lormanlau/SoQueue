@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LoginregService } from './../loginreg.service';
 
 @Component({
@@ -12,9 +12,17 @@ export class DashboardComponent implements OnInit {
 
   constructor(private _LRService: LoginregService) { }
 
+  @Input()
+  customer: Boolean;
+
+  getCustomer(){
+    return this.customer || false;
+  }
+
+
   ngOnInit() { 
   	this.clear();
-  	this.getCustomers();
+    this.getCustomers();
 	}
 
   newCustomer: {}

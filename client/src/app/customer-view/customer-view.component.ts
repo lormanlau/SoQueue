@@ -9,6 +9,7 @@ import { LoginregService } from './../loginreg.service';
 })
 export class CustomerViewComponent implements OnInit {
   hidden: Boolean;
+  customer = true;
   newCustomer = {};
   constructor(private _LRService: LoginregService) { }
 

@@ -21,8 +21,8 @@
 				<th>Name</th>
 				<th>Phone #</th>
 				<th>Party</th>
-				<th>Served</th>
-				<th>Notify</th>
+				<th *ngIf="!getCustomer()">Served</th>
+				<th *ngIf="!getCustomer()">Notify</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,8 +31,8 @@
 				<td>{{customer.name}}</td>
 				<td>{{customer.phone}}</td>
 				<td>{{customer.party}}</td>
-				<td><span (click)="removeCustomer($event, customer)" class="glyphicon glyphicon-check text-success"></span></td>
-				<td><span (click)="sendSMS(customer)" class="glyphicon glyphicon-bell text-warning"></span></td>
+				<td *ngIf="!getCustomer()"><span (click)="removeCustomer($event, customer)" class="glyphicon glyphicon-check text-success"></span></td>
+				<td *ngIf="!getCustomer()"><span (click)="sendSMS(customer)" class="glyphicon glyphicon-bell text-warning"></span></td>
 			</tr>
 		</tbody>
 	</table>
@@ -46,7 +46,6 @@
 						name="name"
 						class="form-control"
 						required
-						pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
 						[(ngModel)]="newCustomer.name"
 						#name='ngModel'
 					>
@@ -60,6 +59,7 @@
 						type="number"
 						name="phone"
 						class="form-control"
+						onKeyPress="if(this.value.length==11) return false;"
 						required
 						[(ngModel)]="newCustomer.phone"
 						#phone='ngModel'
