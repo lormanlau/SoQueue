@@ -42,9 +42,11 @@ export class DashboardComponent implements OnInit {
   customers: any[] = []
 
   addCustomer() {
-  	this._LRService.addCustomer(this.newCustomer, this.companyId);
-  	this.clear();
-  	this.getCustomers();
+  	this._LRService.addCustomer(this.newCustomer, this.companyId).then(res => {
+      this.clear();
+      this.getCustomers();
+    });
+  	
   }
 
   clear() {

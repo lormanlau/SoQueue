@@ -9,30 +9,14 @@ import { ActivatedRoute } from '@angular/router';
   providers: [LoginregService]
 })
 export class CustomerViewComponent implements OnInit {
-  hidden: Boolean;
   customer = true;
-  newCustomer = {};
-  companyId: String;
 
   constructor(private _LRService: LoginregService,
     private _route: ActivatedRoute
     ) { }
 
   ngOnInit() {
-    this.hidden = false;
-    this.getCompanyId()
+
   }
 
-  getCompanyId(){
-    this._route.params.subscribe(params => {
-       this.companyId = params['id'];
-       
-    });
-  }
-
-  addCustomer() {
-    let companyId = localStorage.getItem('companyId');
-    this.hidden = true;
-    this._LRService.addCustomer(this.newCustomer, this.companyId);
-  }
 }
