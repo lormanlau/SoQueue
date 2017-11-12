@@ -17,8 +17,6 @@ module.exports = {
 	delete: function(req, res) {
 		let phone = req.query.phone;
 
-		console.log("phone ", phone);
-
 		if (phone) {
 			Customer.findById(req.params.id, (error, result) => {
 				if (error) {
