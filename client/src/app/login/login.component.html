@@ -11,6 +11,7 @@
               <form #form="ngForm">
                 <div class="form-group">            
                   <p>
+                    <span *ngIf=error>{{error.message}}</span>
                     <span class="glyphicon glyphicon-envelope"></span>
                     <label for="email">Email:</label>
                     <input
@@ -42,7 +43,6 @@
                   </div>
                 <input 
                 (click)="login()" 
-                [routerLink]="['/dashboard']"
                 class="btn btn-primary btn-block"
                 type="submit"  
                 value="Login"

@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 import 'rxjs';
 
 @Injectable()
 export class LoginregService {
-  constructor(private _http: Http) { }
+  constructor(
+    private _http: Http, 
+    private _router: Router) { }
 
   companyId: Number = 0
 
@@ -12,8 +15,7 @@ export class LoginregService {
     return this._http.post('company/login', user)
     .map(res => {
       let data = res.json();
-      this.companyId = data.id;
-
+      this.companyId = data._id;
     })
     .toPromise();
   }
