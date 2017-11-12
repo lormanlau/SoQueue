@@ -5,13 +5,13 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="panel panel-primary">
+        <!-- <div class="panel panel-primary"> -->
           <div class="panel-body">
             <h2>Login</h2>
-              <form #form="ngForm">
-                <div class="form-group">            
-                  <p>
-                    <span *ngIf=error>{{error.message}}</span>
+            <img src="assets/images/people.png"> 
+              <form #form="ngForm"> 
+                <div class="form-group">         
+                  <p>   
                     <span class="glyphicon glyphicon-envelope"></span>
                     <label for="email">Email:</label>
                     <input
@@ -40,6 +40,7 @@
                         #password='ngModel'
                       >
                     </p>
+                    <span class="error" *ngIf=error>{{error.message}}</span>
                   </div>
                 <input 
                 (click)="login()" 
@@ -52,7 +53,7 @@
               <a [routerLink]="['/registration']">Don't have an account? Register</a>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </body>
