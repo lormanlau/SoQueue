@@ -11,13 +11,15 @@ import { HttpModule } from '@angular/http';
 import { LoginregService } from './loginreg.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CustomerViewComponent } from './customer-view/customer-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    DashboardComponent
+    DashboardComponent,
+    CustomerViewComponent
   ],
   imports: [
     BrowserModule,
