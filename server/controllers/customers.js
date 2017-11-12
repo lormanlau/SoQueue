@@ -13,7 +13,7 @@ module.exports = {
 		})
 	},
 	delete: function(req, res){
-		Customer.findByIdAndRemove(req.body.Id, (error, results) => {
+		Customer.findByIdAndRemove(req.params.id, (error, results) => {
 			if (error) {
 				res.status(500).json({message: "Could not delete customer"})
 			} else {
