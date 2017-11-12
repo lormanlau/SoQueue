@@ -63,6 +63,7 @@
 				name="party"
 				class="form-control"
 				required
+				onKeyPress="if(this.value.length==2) return false;"
 				[(ngModel)]="newCustomer.party"
 				#party='ngModel'
 			>
