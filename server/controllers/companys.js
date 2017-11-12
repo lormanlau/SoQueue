@@ -3,13 +3,13 @@ var Company = mongoose.model('Company');
 
 module.exports = {
 	login: function(req, res){
-		Company.findOne({email: req.params.email}, function(errors, results){
+		Company.findOne({email: req.body.email}, function(errors, results){
 			if (errors){
 				res.status(500).json(errors)
 			} else {
 				if (results == null){
 					res.status(500).json({message: "Wrong password or email"})
-				} else if (results["password"] == req.params.password){
+				} else if (results["password"] == req.body.password){
 					res.status(200).json(results)
 				} else {
 					res.status(500).json({message: "Wrong password or email"})
